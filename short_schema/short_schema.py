@@ -3,7 +3,7 @@ import argparse
 import sys
 
 def build_parser():
-    return argparse.ArgumentParser(description='A succinct language for json schema')
+    return argparse.ArgumentParser(description='A succinct language for json schema', prog='short_schema')
 
 def encode(item):
     if item['type'] == 'array':

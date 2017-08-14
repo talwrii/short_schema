@@ -42,7 +42,7 @@ $ echo '[{"one": 1, "two": [1]}, {"one": 2}]' | genson  | short_schema
 # Usage
 
 ```
-usage: make-readme.py [-h]
+usage: short_schema [-h]
 
 A succinct language for json schema
 

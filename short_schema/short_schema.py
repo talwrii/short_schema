@@ -50,6 +50,6 @@ def encode_property(name, schema, optional):
     return optional_flag + '{}: {}'.format(name, encode(schema))
 
 def main():
-    args = build_parser().parse_args()
+    _args = build_parser().parse_args()
     data = json.loads(sys.stdin.read())
     print encode(data)

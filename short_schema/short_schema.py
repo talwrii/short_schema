@@ -10,12 +10,25 @@ def encode(item):
         return encode_array(item)
     elif item['type'] == 'object':
         return encode_object(item)
-    elif item['type'] == 'string':
-        return 'str'
-    elif item['type'] == 'integer':
-        return 'integer'
     else:
-        raise NotImplementedError(item['type'])
+        return encode_type(item['type'])
+
+def encode_type(_type):
+    if _type == 'string':
+        return 'str'
+    elif _type == 'integer':
+        return 'integer'
+    elif _type == 'number':
+        return 'number'
+    elif _type == 'null':
+        return 'null'
+    elif isinstance(_type, list):
+        return ' | '.join(map(encode_type, _type))
+    else:
+        raise NotImplementedError(_type)
+
+def encode_type_arrays(array):
+    return '[{}]'.format(', '.join(map(encode, array)))
 
 def encode_object(item):
     properties = item.get('properties', {})
@@ -23,7 +36,6 @@ def encode_object(item):
     text = [encode_property(name, schema, name not in required) for name, schema in sorted(properties.items())]
 
     return '{}{}{}'.format('{', ', '.join(text), '}')
-
 
 def encode_array(item):
     if not item['items']:
@@ -41,4 +53,3 @@ def main():
     args = build_parser().parse_args()
     data = json.loads(sys.stdin.read())
     print encode(data)
-    

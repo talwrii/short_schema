@@ -33,20 +33,29 @@ pip install git+https://github.com/talwrii/short_schema#egg=short_schema
 
 ```bash
 $ echo '{"one": 1}' | genson  | short_schema
-{one: integer}
+{
+    one: integer
+}
 $ echo '[{"one": 1, "two": [1]}, {"one": 2}]' | genson  | short_schema
-[{one: integer, ?two: [integer]}]
+[
+    {
+        one: integer,
+        ?two: [integer]
+    }
+]
 
 ```
 
 # Usage
 
 ```
-usage: short_schema [-h]
+usage: short_schema [-h] [--debug] [--one-line]
 
 A succinct language for json schema
 
 optional arguments:
-  -h, --help  show this help message and exit
+  -h, --help      show this help message and exit
+  --debug         Print debug output
+  --one-line, -1  Spread the output over multiple lines
 
 ```

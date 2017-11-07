@@ -1,6 +1,6 @@
 # Short Schema
 
-A proof-of-concept succinct [JSON schema](http://json-schema.org/) language. This can be used together with [genson](https://github.com/wolverdude/genson/) to [quickly understand the shape of JSON data](understand-json.md).
+A proof-of-concept succinct [JSON schema](http://json-schema.org/) language. This can be used together with [genson](https://github.com/wolverdude/genson/) to quickly understand the shape of JSON data.
 
 # Motivation
 
@@ -14,7 +14,7 @@ However, machine-readable is not the same as human-readable and even though JSON
 
 At present this tool takes JSON schemas in JSON and outputs the same schema in our more human-readable standard.
 
-This can be used together with tools that create JSON schema from sample data to [quickly understand the format of json data](understand-json.md).
+This can be used together with tools that create JSON schema from sample data to quickly understand the format of json data.
 
 
 # Caveats

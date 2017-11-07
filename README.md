@@ -9,7 +9,7 @@ JSON is a commonly used machine-readable data format.
 Placing your data in JSON makes it very easy for people to programmatically use your data.
 It is, therefore, unsurprising that JSON schemas are written in JSON.
 
-However, machine-readable is not the same as human-readable, and even though JSON is more readable than XML it is not as readable as a format explicitly designed to be read by a human.
+However, machine-readable is not the same as human-readable and even though JSON is more readable than XML it is not as readable as a format explicitly designed to be read by a human.
 
 # Purpose of this tool
 
@@ -23,6 +23,7 @@ This can be used together with tools that create JSON schema from sample data to
 - There is at present no parser for this schema language: only a way of producing this schema from JSON schemas.
 - There may well not support all features of JSON schema only those aspects.
 
+The issue of standardisation can provoke strong opinions. Creating new formats and languages results in people having to understand new things and may require more tooling. The main focus of this tool at present is the *understanding of data formats* rather than the sharing of these formats.
 
 # Installing
 
@@ -67,3 +68,5 @@ Other tools approach this problem from the point of view of generating JSON sche
 
  * https://github.com/zweifisch/yaddle-py
  * https://github.com/zweifisch/kontur
+
+This tool very extends the work of [genson](https://github.com/wolverdude/genson/) and was created in the context of using this tool.

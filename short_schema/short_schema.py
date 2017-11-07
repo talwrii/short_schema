@@ -28,6 +28,8 @@ class Encoder(object):
             return total_indent_string + 'string'
         elif _type == 'integer':
             return total_indent_string + 'integer'
+        elif _type == 'boolean':
+            return total_indent_string + 'boolean'
         elif _type == 'number':
             return total_indent_string + 'number'
         elif _type == 'null':

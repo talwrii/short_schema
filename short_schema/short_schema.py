@@ -5,7 +5,7 @@ import sys
 def build_parser():
     parser = argparse.ArgumentParser(description='A succinct language for json schema', prog='short_schema')
     parser.add_argument('--debug', action='store_true', help='Print debug output')
-    parser.add_argument('--one-line', '-1', action='store_true', default=False, help='Spread the output over multiple lines')
+    parser.add_argument('--one-line', '-1', action='store_true', default=False, help='Put all the output on one line')
     return parser
 
 class Encoder(object):

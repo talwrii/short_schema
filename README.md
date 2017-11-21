@@ -58,7 +58,7 @@ A succinct language for json schema
 optional arguments:
   -h, --help      show this help message and exit
   --debug         Print debug output
-  --one-line, -1  Spread the output over multiple lines
+  --one-line, -1  Put all the output on one line
 
 ```
 
@@ -69,4 +69,4 @@ Other tools approach this problem from the point of view of generating JSON sche
  * https://github.com/zweifisch/yaddle-py
  * https://github.com/zweifisch/kontur
 
-This tool very extends the work of [genson](https://github.com/wolverdude/genson/) and was created in the context of using this tool.
+This tool very much extends the work of [genson](https://github.com/wolverdude/genson/) and was created in the context of using this tool.

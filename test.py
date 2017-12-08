@@ -16,8 +16,8 @@ def backticks(command, stdin=None, shell=False):
 
 
 class Test(unittest.TestCase):
-    def encode(self, encoder, input_object):
-        return encoder.encode(json.loads(backticks(['genson'], stdin='{}'.format(json.dumps(input_object)))))
+    def encode(self, encoder, input_object, one_line):
+        return encoder.encode(json.loads(backticks(['genson'], stdin='{}'.format(json.dumps(input_object)))), one_line=one_line)
 
     def test_trivial(self):
         return self.assert_encoding({}, '{}', '{}')
@@ -51,6 +51,17 @@ class Test(unittest.TestCase):
 }'''
         return self.assert_encoding(input_object, expected_single, expected_multi)
 
+    def test_object_union_types(self):
+        input_object = [{"a": 1}, {"a": {"b":2}}]
+        expected_single = '[{a: integer | {b: integer}}]'
+        expected_multi = '''\
+[
+    {
+        a: integer | {b: integer}
+    }
+]'''
+        return self.assert_encoding(input_object, expected_single, expected_multi)
+
     def test_complex_array_singleton(self):
         input_object = dict(a=[dict(b=1)])
         expected_single = '{a: [{b: integer}]}'
@@ -80,14 +91,12 @@ class Test(unittest.TestCase):
         return self.assert_encoding(input_object, expected_single, expected_multi)
 
     def assert_encoding(self, input_object, expected_single, expected_multi):
-        encoder = short_schema.Encoder(one_line=False)
-        result_multi = self.encode(encoder, input_object)
-
-        encoder = short_schema.Encoder(one_line=True)
-        result_single = self.encode(encoder, input_object)
+        encoder = short_schema.Encoder()
+        result_multi = self.encode(encoder, input_object, one_line=False)
+        result_single = self.encode(encoder, input_object, one_line=True)
 
         self.assertEquals(result_single, expected_single, '\n{}\n{}\n{!r}'.format(expected_single, result_single, expected_single))
-        self.assertEquals(result_multi, expected_multi, '\n{}\n{}\n{!r}'.format(expected_multi, result_multi, expected_multi))
+        self.assertEquals(result_multi, expected_multi, '\n{}\n{}\n{!r}'.format(expected_multi, result_multi, expected_multi)) 
 
 if __name__ == "__main__":
 	unittest.main()

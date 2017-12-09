@@ -17,7 +17,7 @@ class ToxTest(setuptools.command.test.test):
 
 setuptools.setup(
     name='short_schema',
-    version="0.1.0",
+    version="0.1.1",
     author='Tal Wrii',
     author_email='talwrii@gmail.com',
     description='',

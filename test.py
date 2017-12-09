@@ -19,7 +19,8 @@ def backticks(command, stdin=None, shell=False):
 
 class Test(unittest.TestCase):
     def encode(self, encoder, input_object, one_line):
-        return encoder.encode(json.loads(backticks(['genson'], stdin='{}'.format(json.dumps(input_object)))), one_line=one_line)
+
+        return encoder.encode(json.loads(backticks([b'genson'], stdin=json.dumps(input_object).encode('utf8')).decode('utf8')), one_line=one_line)
 
     def test_trivial(self):
         return self.assert_encoding({}, '{}', '{}')
@@ -98,7 +99,7 @@ class Test(unittest.TestCase):
         result_single = self.encode(encoder, input_object, one_line=True)
 
         self.assertEquals(result_single, expected_single, '\n{}\n{}\n{!r}'.format(expected_single, result_single, expected_single))
-        self.assertEquals(result_multi, expected_multi, '\n{}\n{}\n{!r}'.format(expected_multi, result_multi, expected_multi)) 
+        self.assertEquals(result_multi, expected_multi, '\n{}\n{}\n{!r}'.format(expected_multi, result_multi, expected_multi))
 
 if __name__ == "__main__":
 	unittest.main()

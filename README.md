@@ -74,6 +74,6 @@ This tool very much extends the work of [genson](https://github.com/wolverdude/g
 
 # Development
 
-There are [tests](tests.py).
+There are [tests](test.py).
 
 These can be run against [various versions of python](tox.ini) with tox using: `python setup.py test`. This is considered the canonical acceptance test for this project.

@@ -1,7 +1,19 @@
-import setuptools
+import setuptools.command.test
 import os
 
 HERE = os.path.dirname(__file__)
+
+class ToxTest(setuptools.command.test.test):
+    user_options = []
+
+    def initialize_options(self):
+        setuptools.command.test.test.initialize_options(self)
+
+    def run_tests(self):
+        import tox
+        tox.cmdline()
+        tox.cmdline(['-c', 'tox.ini'])
+
 
 setuptools.setup(
     name='short_schema',
@@ -20,6 +32,6 @@ setuptools.setup(
     classifiers=[
         "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)"
     ],
-    test_suite='nose.collector',
-    install_requires=['genson']
+    install_requires=['genson'],
+    cmdclass = {'test': ToxTest},
 )

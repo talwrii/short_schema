@@ -70,3 +70,10 @@ Other tools approach this problem from the point of view of generating JSON sche
  * https://github.com/zweifisch/kontur
 
 This tool very much extends the work of [genson](https://github.com/wolverdude/genson/) and was created in the context of using this tool.
+
+
+# Development
+
+There are [tests](tests.py).
+
+These can be run against [various versions of python](tox.ini) with tox using: `python setup.py test`. This is considered the canonical acceptance test for this project.

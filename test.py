@@ -1,3 +1,5 @@
+# This file is documented in README.md
+
 import json
 import subprocess
 import unittest
